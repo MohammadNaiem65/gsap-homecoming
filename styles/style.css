@@ -1,4 +1,6 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -22,12 +24,13 @@
 body {
     min-height: 100dvh;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
 .logo {
     height: 10em;
+    margin-bottom: 2rem;
     padding: 1.5em;
     will-change: filter;
     transition: filter 300ms;
