@@ -1,27 +1,59 @@
 import { gsap } from 'gsap';
 
-const tween = gsap.to('#tween-beginning', {
-    x: '100dvw',
-    rotate: 360,
-    duration: 10,
-    delay: 0.5,
-    repeat: 1,
+const box1 = document.querySelector('.box-1');
+const box2 = document.querySelector('.box-2');
+const box3 = document.querySelector('.box-3');
+
+// ? Animating the boxes using tween
+// gsap.to(box1, {
+//     x: 1000,
+//     duration: 3,
+//     ease: 'elastic.out(1, 0.3)',
+//     delay: 1,
+// });
+
+// gsap.to(box2, {
+//     x: 1000,
+//     duration: 3,
+//     ease: 'elastic.out(1, 0.3)',
+//     delay: 4,
+// });
+
+// gsap.to(box3, {
+//     x: 1000,
+//     duration: 3,
+//     ease: 'elastic.out(1, 0.3)',
+//     delay: 7,
+// });
+
+// ? Animating the boxes using timeline
+const tl = gsap.timeline();
+
+// tl.to(box1, {
+//     x: 1000,
+//     duration: 3,
+//     ease: 'elastic.out(1, 0.3)',
+// });
+
+// tl.to(box2, {
+//     x: 1000,
+//     duration: 3,
+//     ease: 'elastic.out(1, 0.3)',
+// });
+
+// tl.to(box3, {
+//     x: 1000,
+//     duration: 3,
+//     ease: 'elastic.out(1, 0.3)',
+// });
+
+tl.from('nav h2', {
+    opacity: 0,
+    y: -50,
+    duration: 1,
+}).from('nav div a', {
+    opacity: 0,
+    y: -50,
+    stagger: 0.5,
+    duration: 1,
 });
-
-const playBtn = document.getElementById('play');
-const pauseBtn = document.getElementById('pause');
-const resumeBtn = document.getElementById('resume');
-const restartBtn = document.getElementById('restart');
-const resetBtn = document.getElementById('reset');
-
-// Plays the tween if it is stop
-playBtn.addEventListener('click', () => tween.play());
-
-// Pause the tween if it is playing
-pauseBtn.addEventListener('click', () => tween.pause());
-
-// Resumes the tween if it is stop
-resumeBtn.addEventListener('click', () => tween.resume());
-
-// Restarts the tween from any stage of the animation
-restartBtn.addEventListener('click', () => tween.restart());
