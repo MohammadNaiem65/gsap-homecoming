@@ -1,8 +1,12 @@
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const box1 = document.querySelector('.box-1');
-const box2 = document.querySelector('.box-2');
-const box3 = document.querySelector('.box-3');
+// Register plugins
+gsap.registerPlugin(ScrollTrigger);
+
+// const box1 = document.querySelector('.box-1');
+// const box2 = document.querySelector('.box-2');
+// const box3 = document.querySelector('.box-3');
 
 // ? Animating the boxes using tween
 // gsap.to(box1, {
@@ -47,13 +51,34 @@ const tl = gsap.timeline();
 //     ease: 'elastic.out(1, 0.3)',
 // });
 
-tl.from('nav h2', {
+//  Methods can be chained
+// tl.from('nav h2', {
+//     opacity: 0,
+//     y: -50,
+//     duration: 1,
+// }).from('nav div a', {
+//     opacity: 0,
+//     y: -50,
+//     stagger: 0.5,
+//     duration: 1,
+// });
+
+// ? Animating different pages boxes using ScrollTrigger
+gsap.from('#page-1 .box', {
+    rotate: 360,
     opacity: 0,
-    y: -50,
-    duration: 1,
-}).from('nav div a', {
+    scale: 0,
+    duration: 1.8,
+});
+
+gsap.from('#page-2 .box', {
+    rotate: 360,
     opacity: 0,
-    y: -50,
-    stagger: 0.5,
-    duration: 1,
+    scale: 0,
+    background: 'yellow',
+    duration: 1.8,
+    scrollTrigger: {
+        trigger: '#page-2 .box',
+        markers: true,
+    },
 });
