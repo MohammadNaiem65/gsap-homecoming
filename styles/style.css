@@ -8,90 +8,85 @@
     box-sizing: border-box;
 }
 
-:root {
-    font-family: Victor Mono, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 body {
     min-height: 100dvh;
-    /* display: flex;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+}
+
+#cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.container {
+    display: flex;
     justify-content: center;
-    align-items: center; */
-}
-
-/** Design for logo tween */
-/* .logo {
-    height: 10em;
-    margin-bottom: 2rem;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
-
-.logo:hover {
-    filter: drop-shadow(0 0 1em #646cffaa);
-} */
-
-/* .box {
-    width: 100px;
-    height: 100px;
-}
-
-.box-1 {
-    background-color: red;
-}
-
-.box-2 {
-    background-color: green;
-}
-
-.box-3 {
-    background-color: blue;
-} */
-
-/** Design for timeline */
-/* nav {
-    background-color: red;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 2rem 3.5rem;
-}
-
-nav div {
-    display: flex;
-    gap: 1.5rem;
-} */
-
-/** Design for scrolltrigger */
-.page {
     height: 100dvh;
-    display: flex;
+    gap: 1rem;
+}
+
+.hamburger {
+    height: 100px;
+    width: 100px;
+    border: 1px solid #fff;
+    transition: all 0.1s ease;
+}
+
+.hamburger:first-child {
+    background-color: antiquewhite;
+}
+
+.hamburger:nth-child(2) {
+    background-color: lightpink;
+}
+
+.hamburger:last-child {
+    background-color: lightblue;
+}
+
+/* Using a sibling selector to target non-hovered hamburgers only when a hamburger is being hovered */
+.hamburger:hover ~ .hamburger,
+.hamburger:has(~ .hamburger:hover) {
+    background: linear-gradient(
+            to top left,
+            hsla(0, 0%, 100%, 0),
+            hsla(0, 0%, 100%, 0) calc(50% - 1px),
+            #fff 50%,
+            hsla(0, 0%, 100%, 0) calc(50% + 1px),
+            hsla(0, 0%, 100%, 0)
+        ),
+        linear-gradient(
+            to top right,
+            hsla(0, 0%, 100%, 0),
+            hsla(0, 0%, 100%, 0) calc(50% - 1px),
+            #fff 50%,
+            hsla(0, 0%, 100%, 0) calc(50% + 1px),
+            hsla(0, 0%, 100%, 0)
+        );
+}
+
+.thumbnails__text {
+    color: #fff;
+    display: none;
+    flex-direction: column;
+    font-family: Area Normal, Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
     justify-content: center;
-    align-items: center;
+    left: 55%;
+    line-height: 1.5rem;
+    min-width: 30rem;
+    position: absolute;
+    top: 80%;
+    word-break: keep-all;
 }
 
-#page-1 {
-    background-color: rgb(63, 230, 230);
-}
-
-#page-2 {
-    background-color: rgb(101, 213, 101);
-}
-
-.box {
-    width: 200px;
-    height: 200px;
-    background-color: crimson;
+.hamburger:hover .thumbnails__text {
+    display: flex;
 }

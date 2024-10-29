@@ -1,84 +1,28 @@
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register plugins
-gsap.registerPlugin(ScrollTrigger);
+const cursor = document.querySelector('#cursor');
+const hamburgers = document.querySelectorAll('.hamburger');
 
-// const box1 = document.querySelector('.box-1');
-// const box2 = document.querySelector('.box-2');
-// const box3 = document.querySelector('.box-3');
-
-// ? Animating the boxes using tween
-// gsap.to(box1, {
-//     x: 1000,
-//     duration: 3,
-//     ease: 'elastic.out(1, 0.3)',
-//     delay: 1,
-// });
-
-// gsap.to(box2, {
-//     x: 1000,
-//     duration: 3,
-//     ease: 'elastic.out(1, 0.3)',
-//     delay: 4,
-// });
-
-// gsap.to(box3, {
-//     x: 1000,
-//     duration: 3,
-//     ease: 'elastic.out(1, 0.3)',
-//     delay: 7,
-// });
-
-// ? Animating the boxes using timeline
-const tl = gsap.timeline();
-
-// tl.to(box1, {
-//     x: 1000,
-//     duration: 3,
-//     ease: 'elastic.out(1, 0.3)',
-// });
-
-// tl.to(box2, {
-//     x: 1000,
-//     duration: 3,
-//     ease: 'elastic.out(1, 0.3)',
-// });
-
-// tl.to(box3, {
-//     x: 1000,
-//     duration: 3,
-//     ease: 'elastic.out(1, 0.3)',
-// });
-
-//  Methods can be chained
-// tl.from('nav h2', {
-//     opacity: 0,
-//     y: -50,
-//     duration: 1,
-// }).from('nav div a', {
-//     opacity: 0,
-//     y: -50,
-//     stagger: 0.5,
-//     duration: 1,
-// });
-
-// ? Animating different pages boxes using ScrollTrigger
-gsap.from('#page-1 .box', {
-    rotate: 360,
-    opacity: 0,
-    scale: 0,
-    duration: 1.8,
+window.addEventListener('mousemove', (e) => {
+    gsap.to(cursor, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.5, // Add a small duration for smooth movement
+    });
 });
 
-gsap.from('#page-2 .box', {
-    rotate: 360,
-    opacity: 0,
-    scale: 0,
-    background: 'yellow',
-    duration: 1.8,
-    scrollTrigger: {
-        trigger: '#page-2 .box',
-        markers: true,
-    },
+hamburgers.forEach((hamburger) => {
+    hamburger.addEventListener('mouseenter', () => {
+        gsap.to(cursor, {
+            backgroundColor: '#242424',
+            scale: 2,
+        });
+    });
+
+    hamburger.addEventListener('mouseleave', () => {
+        gsap.to(cursor, {
+            backgroundColor: '#fff',
+            scale: 1,
+        });
+    });
 });
