@@ -1,28 +1,43 @@
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const cursor = document.querySelector('#cursor');
-const hamburgers = document.querySelectorAll('.hamburger');
+// register scroll trigger
+gsap.registerPlugin(ScrollTrigger);
 
-window.addEventListener('mousemove', (e) => {
-    gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.5, // Add a small duration for smooth movement
-    });
-});
+// page 1 animation
+gsap.fromTo(
+    '.page-1 .box',
+    {
+        scale: 0,
+        opacity: 0,
+    },
+    {
+        scale: 1,
+        opacity: 1,
+        rotate: 360,
+        duration: 2,
+    }
+);
 
-hamburgers.forEach((hamburger) => {
-    hamburger.addEventListener('mouseenter', () => {
-        gsap.to(cursor, {
-            backgroundColor: '#242424',
-            scale: 2,
-        });
-    });
-
-    hamburger.addEventListener('mouseleave', () => {
-        gsap.to(cursor, {
-            backgroundColor: '#fff',
-            scale: 1,
-        });
-    });
-});
+// page 2 animation
+gsap.fromTo(
+    '.page-2 .box',
+    {
+        scale: 0,
+        opacity: 0,
+    },
+    {
+        scale: 1,
+        opacity: 1,
+        rotate: 360,
+        duration: 2,
+        scrollTrigger: {
+            trigger: '.page-2 .box',
+            start: 'top 90%',
+            end: 'top 10%',
+            // toggleActions: 'play reverse play reverse', // Events to handle the animation.
+            scrub: 1,
+            markers: true,
+        },
+    }
+);

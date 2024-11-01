@@ -14,79 +14,27 @@ body {
     background-color: #242424;
 }
 
-#cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    border-radius: 50%;
-    z-index: 100;
-    pointer-events: none;
-}
-
-.container {
+.page {
+    height: 100dvh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100dvh;
-    gap: 1rem;
 }
 
-.hamburger {
-    height: 100px;
-    width: 100px;
-    border: 1px solid #fff;
-    transition: all 0.1s ease;
-}
-
-.hamburger:first-child {
-    background-color: antiquewhite;
-}
-
-.hamburger:nth-child(2) {
-    background-color: lightpink;
-}
-
-.hamburger:last-child {
+.page-1 {
     background-color: lightblue;
 }
 
-/* Using a sibling selector to target non-hovered hamburgers only when a hamburger is being hovered */
-.hamburger:hover ~ .hamburger,
-.hamburger:has(~ .hamburger:hover) {
-    background: linear-gradient(
-            to top left,
-            hsla(0, 0%, 100%, 0),
-            hsla(0, 0%, 100%, 0) calc(50% - 1px),
-            #fff 50%,
-            hsla(0, 0%, 100%, 0) calc(50% + 1px),
-            hsla(0, 0%, 100%, 0)
-        ),
-        linear-gradient(
-            to top right,
-            hsla(0, 0%, 100%, 0),
-            hsla(0, 0%, 100%, 0) calc(50% - 1px),
-            #fff 50%,
-            hsla(0, 0%, 100%, 0) calc(50% + 1px),
-            hsla(0, 0%, 100%, 0)
-        );
+.page-2 {
+    background-color: lightgreen;
+}
+.page-3 {
+    background-color: lightgray;
 }
 
-.thumbnails__text {
-    color: #fff;
-    display: none;
-    flex-direction: column;
-    font-family: Area Normal, Helvetica, Arial, sans-serif;
-    font-size: 0.9rem;
-    justify-content: center;
-    left: 55%;
-    line-height: 1.5rem;
-    min-width: 30rem;
-    position: absolute;
-    top: 80%;
-    word-break: keep-all;
-}
-
-.hamburger:hover .thumbnails__text {
-    display: flex;
+.box {
+    height: 30vh;
+    width: 30vh;
+    background-color: crimson;
 }
