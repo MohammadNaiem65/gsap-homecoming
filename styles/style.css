@@ -12,6 +12,7 @@ body {
     min-height: 100dvh;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
+    font-family: 'Roboto', sans-serif;
 }
 
 .page {
@@ -26,15 +27,28 @@ body {
     background-color: lightblue;
 }
 
-.page-2 {
-    background-color: lightgreen;
-}
-.page-3 {
-    background-color: lightgray;
+.page-1 h3 {
+    font-size: 3rem;
+    color: #777;
 }
 
-.box {
-    height: 30vh;
-    width: 30vh;
-    background-color: crimson;
+.page-2 {
+    background-color: lightgreen;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.page-2 h1 {
+    font-size: 35vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    position: absolute;
+    left: 0;
+    transform: translateX(0);
+}
+
+.page-3 {
+    /* background-color: lightgray; */
+    position: relative;
+    /* overflow-x: hidden; */
 }
