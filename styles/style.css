@@ -8,47 +8,23 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     min-height: 100dvh;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    background: #111827;
     font-family: 'Roboto', sans-serif;
 }
 
-.page {
+#logo {
+    width: 40rem;
     height: 100dvh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.page-1 {
-    background-color: lightblue;
-}
-
-.page-1 h3 {
-    font-size: 3rem;
-    color: #777;
-}
-
-.page-2 {
-    background-color: lightgreen;
-    position: relative;
-    overflow-x: hidden;
-}
-
-.page-2 h1 {
-    font-size: 35vw;
-    white-space: nowrap;
-    text-transform: uppercase;
-    position: absolute;
-    left: 0;
-    transform: translateX(0);
-}
-
-.page-3 {
-    /* background-color: lightgray; */
-    position: relative;
-    /* overflow-x: hidden; */
+    margin-inline: auto;
+    display: block;
 }

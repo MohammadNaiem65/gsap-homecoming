@@ -1,14 +1,29 @@
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// register scroll trigger
-gsap.registerPlugin(ScrollTrigger);
+const paths = gsap.utils.toArray('#logo path');
 
-gsap.to('.page-2 h1', {
-    transform: 'translateX(-80%)',
-    scrollTrigger: {
-        trigger: '.page-2',
-        scrub: 1,
-        pin: true,
-    },
+paths.reverse().forEach((path, index) => {
+    gsap.fromTo(
+        path,
+        {
+            strokeDashoffset: path.getTotalLength(),
+            strokeDasharray: path.getTotalLength() - 100,
+        },
+        {
+            fill: '#fff',
+            strokeDasharray: path.getTotalLength(),
+            strokeDashoffset: 0,
+            ease: 'power1.inOut',
+            delay: 0.15 * index,
+            duration: 2,
+        }
+    );
 });
+
+// gsap.to(paths, {
+//     fill: 'white',
+//     delay: 2,
+//     duration: 1,
+// });
+
+console.log(paths);
