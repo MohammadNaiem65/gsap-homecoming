@@ -1,9 +1,19 @@
 import { gsap } from 'gsap';
 
+// Create a timeline for better control
+const tl = gsap.timeline({
+    repeat: -1,
+    repeatDelay: 1,
+});
+
 const paths = gsap.utils.toArray('#logo path');
 
+// Variable to track if one complete animation has occurred
+let hasCompletedOneAnimation = false;
+
+// Add animations to the timeline
 paths.reverse().forEach((path, index) => {
-    gsap.fromTo(
+    tl.fromTo(
         path,
         {
             strokeDashoffset: path.getTotalLength(),
@@ -14,16 +24,41 @@ paths.reverse().forEach((path, index) => {
             strokeDasharray: path.getTotalLength(),
             strokeDashoffset: 0,
             ease: 'power1.inOut',
-            delay: 0.15 * index,
             duration: 2,
-        }
+        },
+        index * 0.18
     );
 });
 
-// gsap.to(paths, {
-//     fill: 'white',
-//     delay: 2,
-//     duration: 1,
-// });
+// Add a callback after one complete animation cycle
+tl.call(() => {
+    hasCompletedOneAnimation = true;
+    checkAndRemovePreloader();
+}, []); // Slightly before the repeat
 
-console.log(paths);
+function removePreloader() {
+    tl.kill();
+    const logo = document.getElementById('logo');
+
+    gsap.to(logo, {
+        y: '-100dvh',
+        duration: 0.5,
+        onComplete: () => {
+            logo.remove();
+        },
+    });
+}
+
+let isPageLoaded = false;
+
+function checkAndRemovePreloader() {
+    if (isPageLoaded && hasCompletedOneAnimation) {
+        removePreloader();
+    }
+}
+
+// Listen for page load
+window.addEventListener('load', () => {
+    isPageLoaded = true;
+    checkAndRemovePreloader();
+});
