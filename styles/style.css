@@ -20,11 +20,22 @@ body {
     color: rgba(255, 255, 255, 0.87);
     background: #111827;
     font-family: 'Roboto', sans-serif;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }
 
-#logo {
+/* #logo {
     width: 40rem;
     height: 100dvh;
     margin-inline: auto;
     display: block;
+} */
+
+.icons {
+    font-size: 16rem;
+}
+
+.fa-brands {
+    margin-right: 1rem;
 }
