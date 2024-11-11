@@ -1,4 +1,8 @@
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // // Create a timeline for better control
 // const tl = gsap.timeline({
@@ -64,18 +68,36 @@ import { gsap } from 'gsap';
 // });
 
 // ! icons magnetic animation effect
-document.querySelectorAll('.fa-brands').forEach((el) => {
-    let xTo = gsap.quickTo(el, 'x', { ease: "expoScale(0.5,7,none)", delay: 0.5 });
-    let yTo = gsap.quickTo(el, 'y', { ease: "expoScale(0.5,7,none)", delay: 0.5 });
+// document.querySelectorAll('.fa-brands').forEach((el) => {
+//     let xTo = gsap.quickTo(el, 'x', { ease: "expoScale(0.5,7,none)", delay: 0.5 });
+//     let yTo = gsap.quickTo(el, 'y', { ease: "expoScale(0.5,7,none)", delay: 0.5 });
 
-    el.addEventListener('mousemove', (e) => {
-        const { width, height, left, top } = el.getBoundingClientRect();
+//     el.addEventListener('mousemove', (e) => {
+//         const { width, height, left, top } = el.getBoundingClientRect();
 
-        xTo(e.clientX - (left + width / 2));
-        yTo(e.clientY - (top + height / 2));
-    });
-    el.addEventListener('mouseleave', () => {
-        xTo(0);
-        yTo(0);
+//         xTo(e.clientX - (left + width / 2));
+//         yTo(e.clientY - (top + height / 2));
+//     });
+//     el.addEventListener('mouseleave', () => {
+//         xTo(0);
+//         yTo(0);
+//     });
+// });
+
+// ! Split text animation
+const paragraphs = document.querySelectorAll('.section p');
+
+paragraphs.forEach((paragraph) => {
+    const splitPara = new SplitType(paragraph, { types: 'words' });
+
+    gsap.from(splitPara.words, {
+        opacity: 0.1,
+        scrollTrigger: {
+            trigger: splitPara.words,
+            start: 'clamp(top 90%)',
+            end: 'clamp(bottom 10%)',
+            scrub: true,
+        },
+        stagger: 0.1,
     });
 });
