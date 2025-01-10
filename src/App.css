@@ -1,0 +1,9 @@
+.path {
+    stroke-dasharray: var(--path-length);
+    stroke-dashoffset: var(--path-length);
+    fill: transparent;
+    animation-name: drawPath;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: forwards;
+}
